@@ -1,154 +1,213 @@
-/* Chat Icon in Bottom Left */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
+}
+
 .chat-icon {
   position: fixed;
   bottom: 20px;
-  left: 20px;
+  right: 20px;
   background-color: #007bff;
-  width: 50px;
-  height: 50px;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 15px;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   z-index: 1000;
 }
 
-.chat-icon:hover {
-  background-color: #0056b3;
-}
-
-/* Chat Window Sliding In/Out */
 .chat-wrapper {
   position: fixed;
   bottom: 0;
-  right: -400px;
+  right: 20px;
   width: 350px;
-  height: 80vh;
-  background-color: #f4f7fa;
-  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
-  transition: right 0.3s ease-in-out;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  max-width: 100%;
+  background-color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 15px 15px 0 0;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
   z-index: 1000;
+  height: 100vh; /* Full height of the window */
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Align children vertically */
 }
 
 .chat-wrapper.open {
-  right: 0;
+  transform: translateY(0);
 }
 
-/* Close Button */
-.close-button {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #333;
-  margin-left: auto;
+.app-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-/* Chat Header */
+.chat-container {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.form-container {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #e0e0e0;
+  background-color: #fff;
+}
+
+
 .chat-header {
+  background-color: #007bff;
+  color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  padding: 10px 15px;
+  border-radius: 15px 15px 0 0;
 }
 
 .app-header {
   font-size: 1.2rem;
-  margin: 0;
 }
 
-/* Chat Container (Scrollable Area) */
-.chat-container {
-  flex: 1;  /* Allow the container to take up available space */
+.close-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.file-upload {
+  padding: 15px;
+  background-color: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.file-label {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#file-upload {
+  display: none;
+}
+
+.upload-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.file-summary {
+  padding: 15px;
+  background-color: #f8f9fa;
+  height: 100px;
   overflow-y: auto;
-  padding: 10px;
-  background-color: #ffffff;
-  scrollbar-width: thin; /* For Firefox */
 }
 
-.chat-container::-webkit-scrollbar {
-  width: 8px;
+.summary-container {
+  padding-left: 10px;
 }
 
-.chat-container::-webkit-scrollbar-thumb {
-  background-color: #ccc;
-  border-radius: 10px;
-}
 
-/* Chat Bubble Styles */
 .chat-bubble {
   max-width: 80%;
+  margin-bottom: 10px;
   padding: 10px;
-  border-radius: 10px;
-  margin: 10px 0;
-  display: inline-block;
-  word-wrap: break-word;
-  font-size: 1rem;
+  border-radius: 15px;
+  font-size: 0.9rem;
 }
 
 .user-bubble {
   background-color: #007bff;
   color: white;
   align-self: flex-end;
-  text-align: right;
 }
 
 .bot-bubble {
-  background-color: #e5e5ea;
-  color: black;
+  background-color: #f1f0f0;
   align-self: flex-start;
-  text-align: left;
 }
 
 .chat-text {
   margin: 0;
 }
 
-/* Form Container (Fixed at the Bottom) */
 .form-container {
-  display: flex;
-  gap: 10px;
   padding: 10px;
-  background-color: #f4f7fa;
-  border-top: 1px solid #ccc;
+  display: flex;
+  background-color: #f8f9fa;
+  border-top: 1px solid #eaeaea;
 }
 
 .input-box {
   flex: 1;
   padding: 10px;
-  font-size: 1rem;
-  border: 2px solid #ccc;
   border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
 }
 
 .submit-button {
   background-color: #007bff;
-  color: white;
-  font-size: 1rem;
-  padding: 10px;
   border: none;
+  color: white;
+  padding: 0 15px;
   border-radius: 5px;
   cursor: pointer;
 }
 
-.submit-button:disabled {
-  background-color: #ccc;
+.loading-text {
+  text-align: center;
+  color: #007bff;
+}
+/* Style for chat mode toggle container */
+.chat-mode-toggle {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  padding: 10px;
 }
 
-/* Loading State */
-.loading-text {
-  font-size: 0.9rem;
-  font-style: italic;
-  color: #888;
-  text-align: center;
+/* Style for toggle buttons */
+.toggle-button {
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 25px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Active state styling */
+.toggle-button.active {
+  background-color: #4CAF50; /* Green for active */
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #4CAF50;
+}
+
+/* Hover effect */
+.toggle-button:hover {
+  background-color: #e0e0e0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Smooth transition for color changes */
+.toggle-button:focus {
+  outline: none;
 }
