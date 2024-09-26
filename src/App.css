@@ -1,0 +1,154 @@
+/* Chat Icon in Bottom Left */
+.chat-icon {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: #007bff;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.chat-icon:hover {
+  background-color: #0056b3;
+}
+
+/* Chat Window Sliding In/Out */
+.chat-wrapper {
+  position: fixed;
+  bottom: 0;
+  right: -400px;
+  width: 350px;
+  height: 80vh;
+  background-color: #f4f7fa;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+  transition: right 0.3s ease-in-out;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-wrapper.open {
+  right: 0;
+}
+
+/* Close Button */
+.close-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+  margin-left: auto;
+}
+
+/* Chat Header */
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.app-header {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+/* Chat Container (Scrollable Area) */
+.chat-container {
+  flex: 1;  /* Allow the container to take up available space */
+  overflow-y: auto;
+  padding: 10px;
+  background-color: #ffffff;
+  scrollbar-width: thin; /* For Firefox */
+}
+
+.chat-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-container::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 10px;
+}
+
+/* Chat Bubble Styles */
+.chat-bubble {
+  max-width: 80%;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px 0;
+  display: inline-block;
+  word-wrap: break-word;
+  font-size: 1rem;
+}
+
+.user-bubble {
+  background-color: #007bff;
+  color: white;
+  align-self: flex-end;
+  text-align: right;
+}
+
+.bot-bubble {
+  background-color: #e5e5ea;
+  color: black;
+  align-self: flex-start;
+  text-align: left;
+}
+
+.chat-text {
+  margin: 0;
+}
+
+/* Form Container (Fixed at the Bottom) */
+.form-container {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  background-color: #f4f7fa;
+  border-top: 1px solid #ccc;
+}
+
+.input-box {
+  flex: 1;
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+
+.submit-button {
+  background-color: #007bff;
+  color: white;
+  font-size: 1rem;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-button:disabled {
+  background-color: #ccc;
+}
+
+/* Loading State */
+.loading-text {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: #888;
+  text-align: center;
+}
